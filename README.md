@@ -67,6 +67,8 @@ Here's a breakdown of all the available configuration items:
 | unitstr   | Y        | "p/kWh"          | The unit to show after the rate in the table. Set to an empty string for none.                                                                                         |
 | exportrates   | Y        | false          | Reverses the colours for use when showing export rates instead of import                                                                              |
 | hour12   | Y        | true          | Show the times in 12 hour format if `true`, and 24 hour format if `false`                                                                            |
+| sortkey   | Y        | "date"       | Sort by either valid from date or price. Values "date" or "price"   |
+| sortdir   | Y     | "asc"         | Sort ascending or descending. Values "asc" or "desc"      |
 
 
 
