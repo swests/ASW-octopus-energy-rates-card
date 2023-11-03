@@ -95,6 +95,9 @@ class OctopusEnergyRatesCard extends HTMLElement {
         const showpast = config.showpast;
         const showday = config.showday;
         const hour12 = config.hour12;
+        //sort 
+        const sortkey = config.sortkey; // values are "date" or "cost"
+        const sortdir = config.sortdir; // values are "asc" or "desc"
 
         var colours = (config.exportrates ? colours_export : colours_import);
 
@@ -120,6 +123,19 @@ class OctopusEnergyRatesCard extends HTMLElement {
             }
         });
         const rows_per_col = Math.ceil(rates_list_length / config.cols);
+
+        // sort rates
+        rates.sort((a, b) => {
+            if (sortKey === "cost") {
+                return sortdir === 'asc' ? a.value_inc_vat - b.value_inc_vat :  b.value_inc_vat - a.value_inc_vat;
+            } else if (sortkey === "date") {
+                return sortdir === 'asc' ? a.valid_from - b.valid_from :  b.valid_from - a.valid_from;
+            } else {
+                return 0;
+            }
+            
+        });
+
 
         var tables = "";
         tables = tables.concat("<td><table class='sub_table'><tbody>");
@@ -213,6 +229,10 @@ class OctopusEnergyRatesCard extends HTMLElement {
             unitstr: 'p/kWh',
             // Make the colouring happen in reverse, for export rates
             exportrates: false,
+            // Sort key
+            sortkey: "date",
+            // Sort direction
+            sortdir: "asc",
         };
 
         const cardConfig = {
