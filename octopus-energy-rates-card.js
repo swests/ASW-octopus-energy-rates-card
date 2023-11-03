@@ -126,7 +126,7 @@ class OctopusEnergyRatesCard extends HTMLElement {
 
         // sort rates
         rates.sort((a, b) => {
-            if (sortKey === "cost") {
+            if (sortkey === "cost") {
                 return sortdir === 'asc' ? a.value_inc_vat - b.value_inc_vat :  b.value_inc_vat - a.value_inc_vat;
             } else if (sortkey === "date") {
                 return sortdir === 'asc' ? a.valid_from - b.valid_from :  b.valid_from - a.valid_from;
